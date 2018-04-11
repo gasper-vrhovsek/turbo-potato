@@ -47,17 +47,14 @@ module.exports.routes = {
   'POST /signup': { action: 'signup'},
 
   'PUT /login' : { action: 'login'},
-  'GET /me' : 'LoginCopntroller.me',
-  'POST /me/update-password' : 'LoginController.updatePassword',
-
-  'GET /user/:id/' : 'UserController.getUser',
-  'PUT /user/:id/like' : 'UserController.likeUser',
-  'PUT /user/:id/unlike' : 'UserController.unlikeUser',
-  'GET /most-liked' : 'UserController.getMostLiked',
-
-  'GET /api/protected/random-quote': 'QuoteController.getProtectedQuote'
 
 
+  // 'GET /me' : 'LoginCopntroller.me',
+  // 'POST /me/update-password' : 'LoginController.updatePassword',
+  // 'GET /user/:id/' : 'UserController.getUser',
+  // 'PUT /user/:id/like' : 'UserController.likeUser',
+  // 'PUT /user/:id/unlike' : 'UserController.unlikeUser',
+  // 'GET /most-liked' : 'UserController.getMostLiked',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
@@ -67,6 +64,4 @@ module.exports.routes = {
   //  ╔╦╗╦╔═╗╔═╗
   //  ║║║║╚═╗║
   //  ╩ ╩╩╚═╝╚═╝
-
-
 };
