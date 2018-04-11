@@ -37,21 +37,21 @@ module.exports = {
     // TODO customToJson
   },
 
-  beforeCreate: function (data, cb) {
-    bcrypt.hash(data.password, sails.config.session.salt, function (err, hash) {
-      data.password = hash;
-      cb();
+  beforeCreate: function (user, callback) {
+    bcrypt.hash(user.password, sails.config.session.salt, function (err, hash) {
+      user.password = hash;
+      callback();
     });
   },
 
-  beforeUpdate: function (data, cb) {
-    if (data.password) {
-      bcrypt.hash(data.password, sails.config.session.salt, function (err, hash) {
-        data.password = hash;
-        cb();
+  beforeUpdate: function (user, callback) {
+    if (user.password) {
+      bcrypt.hash(user.password, sails.config.session.salt, function (err, hash) {
+        user.password = hash;
+        callback();
       });
     } else {
-      return cb();
+      return callback();
     }
   },
 

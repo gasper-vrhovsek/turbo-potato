@@ -28,7 +28,7 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     user: {
       model:'user',
-      // TODO unique: true, when DB
+      // TODO when DB unique: true,
       // required: true,
     }
   },

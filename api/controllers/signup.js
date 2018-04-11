@@ -39,8 +39,6 @@ module.exports = {
       password: password
     }).intercept("E_UNIQUE", ()=>"usernameAlreadyInUse").fetch();
 
-    // TODO attach token
-
     return exits.success(newUser);
   }
 };
