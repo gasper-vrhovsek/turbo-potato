@@ -32,9 +32,12 @@ module.exports = {
     stats: {
       collection: 'userstats',
       via: 'user'
-    }
+    },
 
-    // TODO customToJson
+  },
+
+  customToJSON: function () {
+    return _.omit(this, ['password'])
   },
 
   beforeCreate: function (user, callback) {
@@ -42,6 +45,16 @@ module.exports = {
       user.password = hash;
       callback();
     });
+  },
+
+  afterCreate: async function (user, callback) {
+
+    console.log("afterCreate");
+    await UserStats.create({
+      user: user.id
+    });
+
+    callback();
   },
 
   beforeUpdate: function (user, callback) {
@@ -58,10 +71,10 @@ module.exports = {
   validPassword: function (password, user, callback) {
     bcrypt.compare(password, user.password, function (error, match) {
       if (error) {
-        callback(error);
+        return callback(error);
       }
 
-      callback(null, match);
+      return callback(null, match);
     });
   }
 };

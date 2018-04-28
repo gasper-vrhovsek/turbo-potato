@@ -26,31 +26,30 @@ module.exports = {
   },
 
   exits: {
-    usernameNotFound: {
-      statusCode: 404,
-      description: 'Username / password does not match.'
+    unauthorized: {
+      statusCode: 401,
+      description: 'Unauthorized'
     },
   },
 
   fn: async function (inputs, exits) {
-
-    let user = await User.find({
+    let user = await User.findOne({
       username: inputs.username
-    }).intercept(() => 'usernameNotFound');
+    }).intercept(() => 'unauthorized');
 
     const password = inputs.password;
     User.validPassword(password, user, function (err, valid) {
-      if (err) {
-        return exits.usernameNotFound();
+      if (!err && valid) {
+        console.log("Pass valid!");
+        let token = jwt.sign(
+          {
+            'sub': 'iamatoken',
+            'username': user.username,
+          }, sails.config.session.secret, {expiresIn: "5m"});
+        return exits.success({success: true, token: token, user: user.username});
       }
+      return exits.unauthorized()
     });
-
-    let token = jwt.sign(
-      {
-        'sub': 'iamatoken',
-        'username': user.username,
-      }, sails.config.session.secret, {expiresIn: "24h"});
-    return exits.success({success: true, token: token, user: user.username});
   }
 };
 

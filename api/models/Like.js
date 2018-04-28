@@ -1,5 +1,5 @@
 /**
- * UserStats.js
+ * Like.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -7,15 +7,18 @@
 
 module.exports = {
 
+  primaryKey: 'id',
+
   attributes: {
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    likes: {
-      type: 'number',
-      defaultsTo: 0,
-      min: 0
+    autoPK: false,
+    id: {
+      type: 'string',
+      required: true,
+      unique: true
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -27,9 +30,13 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     user: {
-      model:'user',
+      model: 'user',
       required: true,
-      unique: true
+    },
+
+    liker: {
+      model: 'user',
+      required: true,
     }
   },
 

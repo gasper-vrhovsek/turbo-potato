@@ -45,15 +45,14 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
   'POST /signup': { action: 'signup'},
-
   'PUT /login' : { action: 'login'},
 
 
-  // 'GET /me' : 'LoginCopntroller.me',
-  // 'POST /me/update-password' : 'LoginController.updatePassword',
-  // 'GET /user/:id/' : 'UserController.getUser',
-  // 'PUT /user/:id/like' : 'UserController.likeUser',
-  // 'PUT /user/:id/unlike' : 'UserController.unlikeUser',
+  'GET /me' : 'MeController.me',
+  'POST /me/update-password' : 'MeController.updatePassword',
+  'GET /user/:id' : 'UserController.getUser',
+  'PUT /user/:id/like' : 'UserControllerAuth.likeUser',
+  'PUT /user/:id/unlike' : 'UserControllerAuth.unlikeUser',
   // 'GET /most-liked' : 'UserController.getMostLiked',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
