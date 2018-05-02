@@ -12,6 +12,7 @@
     "bcrypt": "^2.0.0",
     "grunt": "1.0.1",
     "jsonwebtoken": "^8.2.1",
+    "flaverr": "^1.9.1",
     "sails": "^1.0.1",
     "sails-hook-grunt": "^3.0.2",
     "sails-hook-orm": "^2.0.0-16",

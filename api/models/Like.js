@@ -40,5 +40,18 @@ module.exports = {
     }
   },
 
+  getByUserIdLikerId: async function (userId, likerId, db_conn) {
+    let like;
+    if (db_conn) {
+      like= await Like.findOne({
+        id: userId + ':' + likerId
+      }).usingConnection(db_conn);
+    } else {
+      like =  await Like.findOne({
+        id: userId + ':' + likerId
+      });
+    }
+    return like;
+  }
 };
 

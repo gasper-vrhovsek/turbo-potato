@@ -76,5 +76,36 @@ module.exports = {
 
       return callback(null, match);
     });
+  },
+
+  // GET METHODS
+
+  getById: async function (id, db_conn) {
+    let user;
+    if (db_conn) {
+      user = await User.findOne({
+        id: id
+      }).populate('stats').usingConnection(db_conn);
+    } else {
+      user = await User.findOne({
+        id: id
+      }).populate('stats');
+    }
+    return user;
+  },
+
+  getByUsername: async function (username, db_conn) {
+    let user;
+    if (db_conn) {
+      user = await User.findOne({
+        username: username
+      }).usingConnection(db_conn);
+    } else {
+      user = await User.findOne({
+        username: username
+      });
+    }
+    return user;
   }
+
 };

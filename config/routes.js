@@ -51,9 +51,9 @@ module.exports.routes = {
   'GET /me' : 'MeController.me',
   'POST /me/update-password' : 'MeController.updatePassword',
   'GET /user/:id' : 'UserController.getUser',
-  'PUT /user/:id/like' : 'UserControllerAuth.likeUser',
-  'PUT /user/:id/unlike' : 'UserControllerAuth.unlikeUser',
-  // 'GET /most-liked' : 'UserController.getMostLiked',
+  'GET /most-liked' : 'UserController.getMostLiked',
+  'PUT /user/:id/like' : 'UserAuthedController.likeUser',
+  'PUT /user/:id/unlike' : 'UserAuthedController.unlikeUser',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
