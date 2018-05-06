@@ -48,8 +48,6 @@ module.exports = {
   },
 
   afterCreate: async function (user, callback) {
-
-    console.log("afterCreate");
     await UserStats.create({
       user: user.id
     });
@@ -99,11 +97,11 @@ module.exports = {
     if (db_conn) {
       user = await User.findOne({
         username: username
-      }).usingConnection(db_conn);
+      }).populate('stats').usingConnection(db_conn);
     } else {
       user = await User.findOne({
         username: username
-      });
+      }).populate('stats');
     }
     return user;
   }

@@ -1,3 +1,8 @@
+/**
+ * Controller for current user related api endpoints which require authentication
+ *
+ * */
+
 module.exports = {
   me: async function(req, res) {
     let user = await User.findOne({

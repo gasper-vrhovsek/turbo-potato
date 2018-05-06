@@ -1,10 +1,20 @@
+/**
+ * Controller for all user related api endpoints which do not require authentication
+ *
+ * */
+
 module.exports = {
   getUser: async function(req, res) {
     let id = req.param('id');
     let user = await User.findOne({
       id: id
     }).populate('stats').intercept(() => 'unauthorized');
-    res.json({user: user});
+
+    if (!user) {
+      return res.notFound();
+    }
+
+    return res.json({user: user});
   },
 
   getMostLiked: async function(req, res) {

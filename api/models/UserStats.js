@@ -33,5 +33,21 @@ module.exports = {
     }
   },
 
+  // GET METHODS
+
+  getByUserId: async function (id, db_conn) {
+    let userStats;
+    if (db_conn) {
+      userStats = await UserStats.findOne({
+        user: id
+      }).populate('user').usingConnection(db_conn);
+    } else {
+      userStats = await UserStats.findOne({
+        user: id
+      }).populate('user');
+    }
+    return userStats;
+  },
+
 };
 

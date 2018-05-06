@@ -1,3 +1,8 @@
+/**
+ * Controller for all user related api endpoints which require authentication
+ *
+ * */
+
 var flaverr = require('flaverr');
 
 module.exports = {
@@ -60,8 +65,8 @@ module.exports = {
 
       return proceed();
     })
-      .intercept('E_NO_SUCH_USER', () => 'notFound')
-      .intercept('E_NO_SUCH_LIKER', () => 'notFound')
+      .intercept('E_NO_SUCH_USER', () => 'user notFound')
+      .intercept('E_NO_SUCH_LIKER', () => 'liker notFound')
       .intercept('E_USER_ALREADY_LIKED', () => 'badRequest');
 
     return res.ok();
