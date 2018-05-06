@@ -1,6 +1,5 @@
 var supertest = require('supertest');
 var assert = require('chai').assert;
-var expect = require('chai').expect;
 
 describe('UserController.getUser on empty DB', function () {
   before(async function () {

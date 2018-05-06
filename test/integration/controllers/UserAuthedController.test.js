@@ -1,6 +1,5 @@
 var supertest = require('supertest');
 var assert = require('chai').assert;
-var expect = require('chai').expect;
 
 describe('UserController.likeUser', function () {
   let users = {};
@@ -32,7 +31,7 @@ describe('UserController.likeUser', function () {
   describe('#likeUser() as unauthorized', function () {
     it('should return unauthorized', function (done) {
       supertest(sails.hooks.http.app)
-        .put('/user/' + users.user2.id +'/like')
+        .put('/user/' + users.user2.id + '/like')
         .expect(401, done);
     })
   });
@@ -43,8 +42,8 @@ describe('UserController.likeUser', function () {
 
     it('should return ok and like user', function (done) {
       supertest(sails.hooks.http.app)
-        .put('/user/' + users.user2.id +'/like')
-        .set({'x-token' : auth.token })
+        .put('/user/' + users.user2.id + '/like')
+        .set({'x-token': auth.token})
         .expect(200)
         .end(async function (err, res) {
 
@@ -101,7 +100,7 @@ describe('UserController.unlikeUser', function () {
   describe('#unlikeUser() as unauthorized', function () {
     it('should return unauthorized', function (done) {
       supertest(sails.hooks.http.app)
-        .put('/user/' + users.user2.id +'/like')
+        .put('/user/' + users.user2.id + '/like')
         .expect(401, done);
     })
   });
@@ -112,8 +111,8 @@ describe('UserController.unlikeUser', function () {
 
     it('should return ok and like user', function (done) {
       supertest(sails.hooks.http.app)
-        .put('/user/' + users.user2.id +'/unlike')
-        .set({'x-token' : auth.token })
+        .put('/user/' + users.user2.id + '/unlike')
+        .set({'x-token': auth.token})
         .expect(200)
         .end(async function (err, res) {
 
@@ -128,7 +127,7 @@ describe('UserController.unlikeUser', function () {
 });
 
 function loginUser(auth) {
-  return function(done) {
+  return function (done) {
     supertest(sails.hooks.http.app)
       .put('/login')
       .send({
