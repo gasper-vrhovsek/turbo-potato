@@ -22,8 +22,12 @@ module.exports = {
 
   exits: {
     usernameAlreadyInUse: {
-      statusCode: 400,
+      statusCode: 403,
       description: 'Username already taken'
+    },
+    invalidPassword: {
+      statusCode: 403,
+      description: 'Invalid password'
     }
   },
 
@@ -34,7 +38,8 @@ module.exports = {
     const newUser = await User.create({
       username: newUsername,
       password: password
-    }).intercept("E_UNIQUE", ()=>"usernameAlreadyInUse").fetch();
+    }).intercept("E_UNIQUE", ()=>"usernameAlreadyInUse")
+      .intercept("E_INVALID_NEW_RECORD", ()=>"invalidPassword").fetch();
 
     return exits.success(newUser);
   }
